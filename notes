@@ -1,0 +1,45 @@
+HEADING:
+<h1> Text Here </h1>
+TEXT:
+<p> Text Here </p>
+IMAGE:
+<img src="url"/>
+ANOTHER PAGE:
+<url>/TEXT.html
+LINK FONT SIZE:
+a {font-size: 100px}
+STARTING THING:
+
+<!DOCTYPE html>
+<html>
+  <head>
+<link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <h1>HEADING HERE</h1>
+    <p>TEXT HERE</p>
+  </body>
+</html>
+
+EMOJIS:
+⬇️⬆️
+</https://oddgames-replit.noahsnuffin.repl.co/play/1v1/>
+
+color page:
+html {background-color: #00fffb;}
+
+embed:
+
+<iframe
+ style="width: 100%; height: 100%;"
+ src="LINK HERE"
+ scrolling="yes">
+</iframe>
+
+BUTTON:
+
+<button type="submit"><a href="LINK"></a>
+IMAGE
+<br/>
+<a href=LINK>Site</a>
+</button>
