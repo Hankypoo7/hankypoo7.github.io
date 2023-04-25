@@ -36,6 +36,14 @@ embed:
  scrolling="yes">
 </iframe>
 
+New embed:
+
+
+<div class="embed-container">
+<iframe src="your own URL" frameborder="0" allowfullscreen="" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true"></iframe>
+</div>
+
+
 BUTTON:
 
 <button type="submit"><a href="LINK"></a>
