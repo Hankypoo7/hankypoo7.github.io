@@ -1,3 +1,9 @@
+function callbackName(response) {
+    document.getElementById('visits').innerText = response.value;
+}
+
+
+
 const express = require('express');
 const app = express();
 const port = 3000;
