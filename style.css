@@ -53,10 +53,7 @@ image {padding-right: 20px;}
 html, body {
     max-width: 100%;
     overflow-x: hidden;
-body{
-    user-select:none;
-    -webkit-user-select:none;
- }
+
 
  #game{
     position:fixed;
