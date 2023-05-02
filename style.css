@@ -2,7 +2,14 @@ html, body {
     max-width: 100%;
     overflow-x: hidden;
   
-  
+  html, body, {
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+}
   
 html, body {
   height: 100%;
