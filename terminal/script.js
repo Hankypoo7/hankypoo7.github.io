@@ -189,25 +189,22 @@ document.addEventListener('DOMContentLoaded', function() {
         clearTerminal();
         break;
 
-      case 'sudo':
-        if (args.length > 1) {
-          const sudoCommand = args.slice(1).join(' ');
-          displayCommandOutput(`Running command '${sudoCommand}' with administrative privileges`);
-        } else {
-          displayCommandOutput('Missing command after sudo');
-        }
-        break;
-
-      default:
-        displayCommandOutput('Invalid command');
-        break;
-    }
-
-    // Scroll to the bottom of the terminal output
-    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+     case 'sudo':
+  if (args.length > 1) {
+    const sudoCommand = args.slice(1).join(' ');
+    displayCommandOutput(`Running command '${sudoCommand}' with administrative privileges`);
+  } else {
+    displayCommandOutput('Missing command after sudo');
   }
+  break;
+}
 
-  function clearTerminal() {
-    terminalOutput.innerHTML = '';
-  }
-});
+// Scroll to the bottom of the terminal output
+terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
+
+function clearTerminal() {
+  terminalOutput.innerHTML = '';
+}
+
+}); // Add this closing bracket at the end
