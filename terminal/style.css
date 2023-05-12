@@ -1,4 +1,39 @@
 body {
+  font-family: monospace;
+}
+body {
+  background-color: black;
+  color: white;
+}
+
+#terminal-container {
+  background-color: black;
+}
+#output-display {
+  height: 300px;
+  overflow-y: scroll;
+  border: 1px solid white;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: black;
+}
+
+#command-input {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  outline: none;
+}
+#command-input {
+  cursor: cell;
+}
+
+
+
+
+body {
   margin: 0;
   padding: 0;
   font-family: monospace;
