@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Terminal Interface</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Terminal</title>
 </head>
 <body>
   <div id="terminal-container">
     <div id="output-display"></div>
-    <input type="text" id="command-input" autofocus>
+    <div id="input-container">
+      <span>$</span>
+      <input id="command-input" type="text" autocomplete="off" />
+    </div>
   </div>
 
   <script src="script.js"></script>
-</body>
-</html>
-    });
-  </script>
 </body>
 </html>
