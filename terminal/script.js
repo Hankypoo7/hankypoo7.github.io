@@ -125,163 +125,89 @@ document.addEventListener('DOMContentLoaded', function() {
           const file = args[1];
           displayCommandOutput(`Created file: ${file}`);
         } else {
+          displayCommandOutput('Missing
+  file name');
+        }
+        break;
+
+      case 'rm':
+        if (args.length > 1) {
+          // Implementation for 'rm' command
+          const file = args[1];
+          displayCommandOutput(`Deleted file: ${file}`);
+        } else {
           displayCommandOutput('Missing file name');
-         case 'rm':
-    if (args.length > 1) {
-      // Implementation for 'rm' command
-      const file = args[1];
-      displayCommandOutput(`Deleted file: ${file}`);
-    } else {
-      displayCommandOutput('Missing file name');
+        }
+        break;
+
+      case 'pwd':
+        displayCommandOutput('/home/user'); // Replace with the actual current directory
+        break;
+
+      case 'echo':
+        if (args.length > 1) {
+          const message = args.slice(1).join(' ');
+          displayCommandOutput(message);
+        } else {
+          displayCommandOutput('Missing message');
+        }
+        break;
+
+      case 'cat':
+        if (args.length > 1) {
+          const fileToRead = args[1];
+          // Implement logic to read and display the content of the file
+          const fileContent = getFileContent(fileToRead); // Replace with the actual file reading logic
+          displayCommandOutput(fileContent);
+        } else {
+          displayCommandOutput('Missing file name');
+        }
+        break;
+
+      case 'echo-date':
+        const currentDate = new Date().toLocaleDateString();
+        displayCommandOutput(currentDate);
+        break;
+
+      case 'help':
+        displayHelp();
+        break;
+
+      case 'ip':
+        fetch('https://api.ipify.org?format=json')
+          .then(response => response.json())
+          .then(data => {
+            const ipOutput = `Your IP address is: ${data.ip}`;
+            displayCommandOutput(ipOutput);
+          })
+          .catch(error => {
+            displayCommandOutput('Failed to retrieve IP address');
+          });
+        break;
+
+      case 'clear':
+        clearTerminal();
+        break;
+
+      case 'sudo':
+        if (args.length > 1) {
+          const sudoCommand = args.slice(1).join(' ');
+          displayCommandOutput(`Running command '${sudoCommand}' with administrative privileges`);
+        } else {
+          displayCommandOutput('Missing command after sudo');
+        }
+        break;
+
+      default:
+        displayCommandOutput('Invalid command');
+        break;
     }
-    break;
 
-  case 'pwd':
-    displayCommandOutput('/home/user'); // Replace with the actual current directory
-    break;
+    // Scroll to the bottom of the terminal output
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+  }
 
-  case 'echo':
-    if (args.length > 1) {
-      const message = args.slice(1).join(' ');
-      displayCommandOutput(message);
-    } else {
-      displayCommandOutput('Missing message');
-    }
-    break;
-
-  case 'cat':
-    if (args.length > 1) {
-      const fileToRead = args[1];
-      // Implement logic to read and display the content of the file
-      const fileContent = getFileContent(fileToRead); // Replace with the actual file reading logic
-      displayCommandOutput(fileContent);
-    } else {
-      displayCommandOutput('Missing file name');
-    }
-    break;
-
-  case 'echo-date':
-    const currentDate = new Date().toLocaleDateString();
-    displayCommandOutput(currentDate);
-    break;
-
-  case 'help':
-    displayHelp();
-    break;
-
-  case 'ip':
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        const ipOutput = `Your IP address is: ${data.ip}`;
-        displayCommandOutput(ipOutput);
-      })
-      .catch(error => {
-        displayCommandOutput('Failed to retrieve IP address');
-      });
-    break;
-
-  case 'clear':
-    clearTerminal();
-    break;
-
-  case 'sudo':
-    if (args.length > 1) {
-      const sudoCommand = args.slice(1).join(' ');
-      displayCommandOutput(`Running command '${sudoCommand}' with administrative privileges`);
-    } else {
-      displayCommandOutput('Missing command after sudo');
-    }
-    break;
-
-  default:
-    displayCommandOutput('Invalid command');
-    break;
-}
-
-// Scroll to the bottom of the terminal output
-terminalOutput.scrollTop = terminalOutput.scrollHeight;
-
-javascript
-Copy code
-  case 'rm':
-    if (args.length > 1) {
-      // Implementation for 'rm' command
-      const file = args[1];
-      displayCommandOutput(`Deleted file: ${file}`);
-    } else {
-      displayCommandOutput('Missing file name');
-    }
-    break;
-
-  case 'pwd':
-    displayCommandOutput('/home/user'); // Replace with the actual current directory
-    break;
-
-  case 'echo':
-    if (args.length > 1) {
-      const message = args.slice(1).join(' ');
-      displayCommandOutput(message);
-    } else {
-      displayCommandOutput('Missing message');
-    }
-    break;
-
-  case 'cat':
-    if (args.length > 1) {
-      const fileToRead = args[1];
-      // Implement logic to read and display the content of the file
-      const fileContent = getFileContent(fileToRead); // Replace with the actual file reading logic
-      displayCommandOutput(fileContent);
-    } else {
-      displayCommandOutput('Missing file name');
-    }
-    break;
-
-  case 'echo-date':
-    const currentDate = new Date().toLocaleDateString();
-    displayCommandOutput(currentDate);
-    break;
-
-  case 'help':
-    displayHelp();
-    break;
-
-  case 'ip':
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        const ipOutput = `Your IP address is: ${data.ip}`;
-        displayCommandOutput(ipOutput);
-      })
-      .catch(error => {
-        displayCommandOutput('Failed to retrieve IP address');
-      });
-    break;
-
-  case 'clear':
-    clearTerminal();
-    break;
-
-  case 'sudo':
-    if (args.length > 1) {
-      const sudoCommand = args.slice(1).join(' ');
-      displayCommandOutput(`Running command '${sudoCommand}' with administrative privileges`);
-    } else {
-      displayCommandOutput('Missing command after sudo');
-    }
-    break;
-
-  default:
-    displayCommandOutput('Invalid command');
-    break;
-}
-
-// Scroll to the bottom of the terminal output
-terminalOutput.scrollTop = terminalOutput.scrollHeight;
-}
-
-function clearTerminal() {
-terminalOutput.innerHTML = '';
-}
+  function clearTerminal() {
+    terminalOutput.innerHTML = '';
+  }
 });
