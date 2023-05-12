@@ -88,9 +88,12 @@ function executeCommand(command) {
       terminalOutput.appendChild(outputEchoDate);
       break;
 
-    case 'help':
+ case 'help':
       if (args.length === 1) {
         const helpOutput = document.createElement('p');
         helpOutput.classList.add('command-output');
         helpOutput.innerHTML = '<strong>Available commands:</strong><br>' + availableCommands.join('<br>');
-        terminal
+        terminalOutput.appendChild(helpOutput);
+      } else {
+        // Implement logic to display help for a specific command
+      }
