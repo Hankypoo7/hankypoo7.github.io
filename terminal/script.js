@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     commandInput.value = ''; // Clear the command input after execution
   });
-  
+
   const availableCommands = [
     {
       command: 'ls',
@@ -113,7 +113,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (args.length > 1) {
           // Implementation for 'mkdir' command
           const directory = args[1];
-          displayCommandOutput(`Created directory: ${directory}`);
+          displayCommand
+        Output(`Created directory: ${directory}`);
         } else {
           displayCommandOutput('Missing directory name');
         }
@@ -126,7 +127,8 @@ document.addEventListener('DOMContentLoaded', function() {
           displayCommandOutput(`Created file: ${file}`);
         } else {
           displayCommandOutput('Missing file name');
-               break;
+        }
+        break;
 
       case 'rm':
         if (args.length > 1) {
