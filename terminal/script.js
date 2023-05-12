@@ -2,6 +2,15 @@ const terminalOutput = document.getElementById('terminal-output');
 const commandInput = document.getElementById('command-input');
 const commandForm = document.getElementById('command-form');
 
+commandForm.addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent default form submission
+
+  const command = commandInput.value.trim();
+  executeCommand(command);
+
+  commandInput.value = ''; // Clear the command input after execution
+});
+
 const availableCommands = [
   'ls - List files and directories',
   'cd [directory] - Change directory',
