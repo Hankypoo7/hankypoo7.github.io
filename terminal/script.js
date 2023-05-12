@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     'cat [file] - Display file content',
     'echo-date - Show current date',
     'help - Show available commands',
+    'ip - Show public ip adress',
+    
     // Add more commands here
   ];
 
@@ -39,6 +41,24 @@ document.addEventListener('DOMContentLoaded', function() {
         terminalOutput.appendChild(outputLs);
         break;
 
+        case 'ip':
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      const ipOutput = document.createElement('p');
+      ipOutput.classList.add('command-output');
+      ipOutput.textContent = 'Your IP address is: ' + data.ip;
+      terminalOutput.appendChild(ipOutput);
+    })
+    .catch(error => {
+      const ipOutput = document.createElement('p');
+      ipOutput.classList.add('command-output');
+      ipOutput.textContent = 'Failed to retrieve IP address';
+      terminalOutput.appendChild(ipOutput);
+    });
+  break;
+
+        
       case 'cd':
         const outputCd = document.createElement('p');
         outputCd.classList.add('command-output');
