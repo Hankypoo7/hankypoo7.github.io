@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     commandInput.value = ''; // Clear the command input after execution
   });
-
+  
   const availableCommands = [
     {
       command: 'ls',
