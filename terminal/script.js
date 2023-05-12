@@ -125,10 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
           const file = args[1];
           displayCommandOutput(`Created file: ${file}`);
         } else {
-          displayCommandOutput('Missing
-  file name');
-        }
-        break;
+          displayCommandOutput('Missing file name');
+               break;
 
       case 'rm':
         if (args.length > 1) {
@@ -189,22 +187,25 @@ document.addEventListener('DOMContentLoaded', function() {
         clearTerminal();
         break;
 
-     case 'sudo':
-  if (args.length > 1) {
-    const sudoCommand = args.slice(1).join(' ');
-    displayCommandOutput(`Running command '${sudoCommand}' with administrative privileges`);
-  } else {
-    displayCommandOutput('Missing command after sudo');
+      case 'sudo':
+        if (args.length > 1) {
+          const sudoCommand = args.slice(1).join(' ');
+          displayCommandOutput(`Running command '${sudoCommand}' with administrative privileges`);
+        } else {
+          displayCommandOutput('Missing command after sudo');
+        }
+        break;
+
+      default:
+        displayCommandOutput('Invalid command');
+        break;
+    }
+
+    // Scroll to the bottom of the terminal output
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
   }
-  break;
-}
 
-// Scroll to the bottom of the terminal output
-terminalOutput.scrollTop = terminalOutput.scrollHeight;
-}
-
-function clearTerminal() {
-  terminalOutput.innerHTML = '';
-}
-
-}); // Add this closing bracket at the end
+  function clearTerminal() {
+    terminalOutput.innerHTML = '';
+  }
+});
