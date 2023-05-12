@@ -1,5 +1,3 @@
-// JavaScript code for Terminal Emulator
-
 document.addEventListener('DOMContentLoaded', function() {
   const terminalOutput = document.getElementById('terminal-output');
   const commandInput = document.getElementById('command-input');
@@ -15,18 +13,50 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   const availableCommands = [
-    'ls - List files and directories',
-    'cd [directory] - Change directory',
-    'mkdir [directory] - Create a new directory',
-    'touch [file] - Create a new file',
-    'rm [file] - Delete a file',
-    'pwd - Show current directory',
-    'echo [message] - Display a message',
-    'cat [file] - Display file content',
-    'echo-date - Show current date',
-    'help - Show available commands',
-    'ip - Show public ip adress',
-    
+    {
+      command: 'ls',
+      description: 'List files and directories'
+    },
+    {
+      command: 'cd [directory]',
+      description: 'Change directory'
+    },
+    {
+      command: 'mkdir [directory]',
+      description: 'Create a new directory'
+    },
+    {
+      command: 'touch [file]',
+      description: 'Create a new file'
+    },
+    {
+      command: 'rm [file]',
+      description: 'Delete a file'
+    },
+    {
+      command: 'pwd',
+      description: 'Show current directory'
+    },
+    {
+      command: 'echo [message]',
+      description: 'Display a message'
+    },
+    {
+      command: 'cat [file]',
+      description: 'Display file content'
+    },
+    {
+      command: 'echo-date',
+      description: 'Show current date'
+    },
+    {
+      command: 'help',
+      description: 'Show available commands'
+    },
+    {
+      command: 'ip',
+      description: 'Show public IP address'
+    },
     // Add more commands here
   ];
 
@@ -41,24 +71,23 @@ document.addEventListener('DOMContentLoaded', function() {
         terminalOutput.appendChild(outputLs);
         break;
 
-        case 'ip':
-  fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-      const ipOutput = document.createElement('p');
-      ipOutput.classList.add('command-output');
-      ipOutput.textContent = 'Your IP address is: ' + data.ip;
-      terminalOutput.appendChild(ipOutput);
-    })
-    .catch(error => {
-      const ipOutput = document.createElement('p');
-      ipOutput.classList.add('command-output');
-      ipOutput.textContent = 'Failed to retrieve IP address';
-      terminalOutput.appendChild(ipOutput);
-    });
-  break;
+      case 'ip':
+        fetch('https://api.ipify.org?format=json')
+          .then(response => response.json())
+          .then(data => {
+            const ipOutput = document.createElement('p');
+            ipOutput.classList.add('command-output');
+            ipOutput.textContent = 'Your IP address is: ' + data.ip;
+            terminalOutput.appendChild(ipOutput);
+          })
+          .catch(error => {
+            const ipOutput = document.createElement('p');
+            ipOutput.classList.add('command-output');
+            ipOutput.textContent = 'Failed to retrieve IP address';
+            terminalOutput.appendChild(ipOutput);
+          });
+        break;
 
-        
       case 'cd':
         const outputCd = document.createElement('p');
         outputCd.classList.add('command-output');
@@ -88,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         break;
 
       case 'pwd':
-        const outputPwd = document.createElement('p');
+        const outputPwd = document.createElement
         outputPwd.classList.add('command-output');
         outputPwd.textContent = '/home/user'; // Replace with the actual current directory
         terminalOutput.appendChild(outputPwd);
@@ -121,21 +150,22 @@ document.addEventListener('DOMContentLoaded', function() {
         break;
 
       case 'help':
-                if (args.length === 1) {
+        if (args.length === 1) {
           const helpOutput = document.createElement('p');
           helpOutput.classList.add('command-output');
-          helpOutput.innerHTML = '<strong>Available commands:</strong><br>' + availableCommands.join('<br>');
+          const commandsList = availableCommands.map(cmd => `<strong>${cmd.command}</strong> - ${cmd.description}`).join('<br>');
+          helpOutput.innerHTML = '<strong>Available commands:</strong><br>' + commandsList;
           terminalOutput.appendChild(helpOutput);
         } else {
           const specificCommand = args[1];
           const matchingCommand = availableCommands.find(function(command) {
-            return command.startsWith(specificCommand);
+            return command.command.startsWith(specificCommand);
           });
 
           if (matchingCommand) {
             const helpOutput = document.createElement('p');
             helpOutput.classList.add('command-output');
-            helpOutput.innerHTML = matchingCommand;
+            helpOutput.innerHTML = `<strong>${matchingCommand.command}</strong> - ${matchingCommand.description}`;
             terminalOutput.appendChild(helpOutput);
           } else {
             const helpOutput = document.createElement('p');
