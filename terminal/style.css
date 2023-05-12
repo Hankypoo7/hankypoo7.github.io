@@ -1,51 +1,34 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000000;
-}
-
 #terminal-container {
-  width: 600px;
-  height: 400px;
-  background-color: #000000;
-  border: 1px solid #00FF00;
+  background-color: #000;
+  color: #fff;
   padding: 10px;
+  font-family: monospace;
+  height: 300px;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#output-display {
-  margin-bottom: 10px;
-}
-
-#input-container {
-  display: flex;
-  align-items: center;
-}
-
-#input-container span {
-  color: #00FF00;
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-#command-input {
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  color: #00FF00;
-  outline: none;
 }
 
 .command-output {
-  color: #00FF00;
-  margin-bottom: 5px;
+  margin: 0;
 }
 
-.error {
-  color: red;
+#command-input {
+  width: 80%;
+  padding: 5px;
+  font-family: monospace;
+}
+
+#command-form {
+  margin-top: 10px;
+}
+
+#command-form input[type="submit"] {
+  padding: 5px 10px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#command-form input[type="submit"]:hover {
+  background-color: #666;
 }
