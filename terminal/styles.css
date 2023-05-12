@@ -1,0 +1,19 @@
+#terminal-output {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-family: monospace;
+}
+
+.command-output {
+  margin: 0;
+}
+
+#command-form {
+  margin-top: 10px;
+}
+
+#command-input {
+  width: 300px;
+}
+
