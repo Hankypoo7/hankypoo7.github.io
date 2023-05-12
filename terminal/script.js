@@ -1,3 +1,7 @@
+const terminalOutput = document.getElementById('terminal-output');
+const commandInput = document.getElementById('command-input');
+const commandForm = document.getElementById('command-form');
+
 const availableCommands = [
   'ls - List files and directories',
   'cd [directory] - Change directory',
@@ -17,7 +21,6 @@ function executeCommand(command) {
 
   switch (args[0]) {
     case 'ls':
-      // Implement logic to display a list of files and directories
       const outputLs = document.createElement('p');
       outputLs.classList.add('command-output');
       outputLs.textContent = 'File1.txt  File2.txt  Directory1';
@@ -25,7 +28,6 @@ function executeCommand(command) {
       break;
 
     case 'cd':
-      // Implement logic to change the current directory
       const outputCd = document.createElement('p');
       outputCd.classList.add('command-output');
       outputCd.textContent = 'Changed directory to ' + args[1];
@@ -33,7 +35,6 @@ function executeCommand(command) {
       break;
 
     case 'mkdir':
-      // Implement logic to create a new directory
       const outputMkdir = document.createElement('p');
       outputMkdir.classList.add('command-output');
       outputMkdir.textContent = 'Created directory: ' + args[1];
@@ -41,7 +42,6 @@ function executeCommand(command) {
       break;
 
     case 'touch':
-      // Implement logic to create a new file
       const outputTouch = document.createElement('p');
       outputTouch.classList.add('command-output');
       outputTouch.textContent = 'Created file: ' + args[1];
@@ -49,7 +49,6 @@ function executeCommand(command) {
       break;
 
     case 'rm':
-      // Implement logic to delete a file
       const outputRm = document.createElement('p');
       outputRm.classList.add('command-output');
       outputRm.textContent = 'Deleted file: ' + args[1];
@@ -93,3 +92,5 @@ function executeCommand(command) {
       if (args.length === 1) {
         const helpOutput = document.createElement('p');
         helpOutput.classList.add('command-output');
+        helpOutput.innerHTML = '<strong>Available commands:</strong><br>' + availableCommands.join('<br>');
+        terminal
