@@ -75,7 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       command: 'sl',
       description: 'Not available',
-    }
+    },
+    {
+      command: 'cowsay [message]',
+      description: 'Display a cow saying a message',
+    },
   ];
 
   function getFileContent(file) {
@@ -103,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function executeCommand(command) {
     const args = command.split(' ');
+
     switch (args[0]) {
       case 'ls':
         displayCommandOutput('File1.txt  File2.txt  Directory1');
@@ -130,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       case 'touch':
         if (args.length > 1) {
-          // Implementation
+          // Implementation for 'touch' command
           const file = args[1];
           displayCommandOutput(`Created file: ${file}`);
         } else {
@@ -217,6 +222,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
       case 'sl':
         displayCommandOutput('Command not available');
+        break;
+
+      case 'cowsay':
+        if (args.length > 1) {
+          const message = args.slice(1).join(' ');
+          const cowSaid = `  ${'\\'.repeat(message.length + 2)}\n< ${message} >\n  ${'/'.repeat(message.length + 2)}`;
+          const cowOutput = `<pre>${cowSaid}</pre>`;
+          displayCommandOutput(cowOutput);
+        } else {
+          displayCommandOutput('Missing message');
+        }
         break;
 
       default:
