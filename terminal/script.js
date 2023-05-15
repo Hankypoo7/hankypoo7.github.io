@@ -88,6 +88,27 @@ document.addEventListener('DOMContentLoaded', function() {
       command: 'time',
       description: 'Display current time',
     },
+    
+    {
+      command: 'download [url] [filename]',
+      description: 'Download a file from a URL',
+    },
+    
+    
+    
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
+    
+    
+    
   ];
 
   function getFileContent(file) {
@@ -262,14 +283,50 @@ document.addEventListener('DOMContentLoaded', function() {
       default:
         displayCommandOutput(`Command not found: ${args[0]}`);
         break;
+        
+        //ADD MORE COMMANDS
+        //ADD MORE COMMANDS
+        //ADD MORE COMMANDS
+        //ADD MORE COMMANDS
+        //ADD MORE COMMANDS
+        //ADD MORE COMMANDS
+        //ADD MORE COMMANDS
+        //ADD MORE COMMANDS
+        //ADD MORE COMMANDS
+        //ADD MORE COMMANDS
+
+        
+        
+        
+ case 'download':
+        if (args.length > 2) {
+          const url = args[1];
+          const filename = args[2];
+          downloadFile(url, filename);
+        } else {
+          displayCommandOutput('Missing URL or filename');
+        }
+        break;
+
+      default:
+        displayCommandOutput(`Command not found: ${args[0]}`);
+        break;
     }
   }
 
+  function downloadFile(url, filename) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.target = '_blank';
+    link.click();
+    displayCommandOutput(`Downloading file: ${filename}`);
+  }
+
   function clearTerminal() {
-    while (terminalOutput.firstChild) {
-      terminalOutput.removeChild(terminalOutput.firstChild);
-    }
+    terminalOutput.innerHTML = '';
   }
 });
+
 
             
