@@ -1,5 +1,5 @@
-terminal: #terminal-output {
-  background-color: black;
+#terminal-output {
+  background-color: black !important; /* Use !important to override any conflicting styles */
   color: white;
   padding: 10px;
   font-family: monospace;
