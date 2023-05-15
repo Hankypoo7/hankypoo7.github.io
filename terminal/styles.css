@@ -3,10 +3,13 @@
   color: white;
   padding: 10px;
   font-family: monospace;
+  overflow-y: scroll; /* Add vertical scroll for terminal output */
+  height: 300px; /* Set a fixed height for the terminal output */
 }
 
 .command-output {
   margin: 0;
+  white-space: pre-line; /* Preserve line breaks in command output */
 }
 
 #command-form {
@@ -14,6 +17,22 @@
 }
 
 #command-input {
-  width: 300px;
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  font-family: monospace;
 }
 
+#command-input::placeholder {
+  color: gray;
+}
+
+#command-input:focus {
+  outline: none;
+}
+
+#command-input:focus::placeholder {
+  color: transparent;
+}
