@@ -88,27 +88,10 @@ document.addEventListener('DOMContentLoaded', function() {
       command: 'time',
       description: 'Display current time',
     },
-    
     {
       command: 'download [url] [filename]',
       description: 'Download a file from a URL',
     },
-    
-    
-    
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    //ADD MORE COMMANDS AND THEIR DESCRIPTIONS
-    
-    
-    
   ];
 
   function getFileContent(file) {
@@ -147,13 +130,10 @@ document.addEventListener('DOMContentLoaded', function() {
           // Implementation for 'cd' command
           const directory = args[1];
           displayCommandOutput(`Changed directory to ${directory}`);
-        } else {
-          displayCommandOutput('Missing directory argument');
-        }
-        break;
+               break;
 
       case 'mkdir':
-        if ( args.length > 1) {
+        if (args.length > 1) {
           // Implementation for 'mkdir' command
           const directory = args[1];
           displayCommandOutput(`Created directory: ${directory}`);
@@ -161,7 +141,8 @@ document.addEventListener('DOMContentLoaded', function() {
           displayCommandOutput('Missing directory name');
         }
         break;
-        case 'touch':
+
+      case 'touch':
         if (args.length > 1) {
           // Implementation for 'touch' command
           const file = args[1];
@@ -262,71 +243,51 @@ document.addEventListener('DOMContentLoaded', function() {
           displayCommandOutput('Missing message');
         }
         break;
-        case 'calc':
+
+      case 'calc':
         if (args.length > 1) {
           const expression = args.slice(1).join(' ');
           try {
             const result = eval(expression);
             displayCommandOutput(`Result: ${result}`);
-          } catch (error) {            displayCommandOutput('Invalid expression');
-          }
-        } else {
-          displayCommandOutput('Missing expression');
-        }
-        break;
+          } catch(error) {
+displayCommandOutput('Invalid expression');
+}
+} else {
+displayCommandOutput('Missing expression');
+}
+break;
+            case 'time':
+    const currentTime = new Date().toLocaleTimeString();
+    displayCommandOutput(currentTime);
+    break;
 
-      case 'time':
-        const currentTime = new Date().toLocaleTimeString();
-        displayCommandOutput(currentTime);
-        break;
-
-      default:
-        displayCommandOutput(`Command not found: ${args[0]}`);
-        break;
-        
-        //ADD MORE COMMANDS
-        //ADD MORE COMMANDS
-        //ADD MORE COMMANDS
-        //ADD MORE COMMANDS
-        //ADD MORE COMMANDS
-        //ADD MORE COMMANDS
-        //ADD MORE COMMANDS
-        //ADD MORE COMMANDS
-        //ADD MORE COMMANDS
-        //ADD MORE COMMANDS
-
-        
-        
-        
- case 'download':
-        if (args.length > 2) {
-          const url = args[1];
-          const filename = args[2];
-          downloadFile(url, filename);
-        } else {
-          displayCommandOutput('Missing URL or filename');
-        }
-        break;
-
-      default:
-        displayCommandOutput(`Command not found: ${args[0]}`);
-        break;
+  case 'download':
+    if (args.length > 2) {
+      const url = args[1];
+      const filename = args[2];
+      downloadFile(url, filename);
+    } else {
+      displayCommandOutput('Missing URL or filename');
     }
-  }
+    break;
 
-  function downloadFile(url, filename) {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    link.target = '_blank';
-    link.click();
-    displayCommandOutput(`Downloading file: ${filename}`);
-  }
+  default:
+    displayCommandOutput(`Command not found: ${args[0]}`);
+    break;
+}
+}
 
-  function clearTerminal() {
-    terminalOutput.innerHTML = '';
-  }
+function downloadFile(url, filename) {
+const link = document.createElement('a');
+link.href = url;
+link.download = filename;
+link.target = '_blank';
+link.click();
+displayCommandOutput(Downloading file: ${filename});
+}
+
+function clearTerminal() {
+terminalOutput.innerHTML = '';
+}
 });
-
-
-            
