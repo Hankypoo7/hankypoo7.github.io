@@ -100,12 +100,15 @@ document.addEventListener('DOMContentLoaded', function() {
     return 'File content of ' + file;
   }
 
-  function displayCommandOutput(output) {
-    const outputElement = document.createElement('p');
-    outputElement.classList.add('command-output');
-    outputElement.textContent = output;
-    terminalOutput.appendChild(outputElement);
-  }
+ function displayCommandOutput(output) {
+  const outputElement = document.createElement('p');
+  outputElement.classList.add('command-output');
+  outputElement.textContent = output;
+  terminalOutput.appendChild(outputElement);
+
+  // Scroll to the bottom of the output area
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
 
   function displayHelp() {
     const helpOutput = document.createElement('p');
