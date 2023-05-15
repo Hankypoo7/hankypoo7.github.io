@@ -3,14 +3,13 @@
   color: white;
   padding: 10px;
   font-family: monospace;
-  overflow-y: scroll;
-  height: 300px;
-  line-height: 1.4; /* Adjust the line height for better readability */
+  overflow-y: scroll; /* Add vertical scroll for terminal output */
+  height: 300px; /* Set a fixed height for the terminal output */
 }
 
 .command-output {
   margin: 0;
-  white-space: pre-wrap; /* Preserve line breaks and wrap long lines */
+  white-space: pre-line; /* Preserve line breaks in command output */
 }
 
 #command-form {
@@ -24,7 +23,6 @@
   border: none;
   outline: none;
   font-family: monospace;
-  caret-color: lime; /* Change the color of the caret to lime */
 }
 
 #command-input::placeholder {
@@ -37,22 +35,4 @@
 
 #command-input:focus::placeholder {
   color: transparent;
-}
-
-/* Style the cursor */
-.command-cursor {
-  display: inline-block;
-  background-color: white;
-  color: black;
-  margin-left: 2px;
-  animation: blink-caret 0.7s infinite;
-}
-
-@keyframes blink-caret {
-  from, to {
-    background-color: transparent;
-  }
-  50% {
-    background-color: white;
-  }
 }
