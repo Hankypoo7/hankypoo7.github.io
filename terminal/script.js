@@ -125,14 +125,16 @@ document.addEventListener('DOMContentLoaded', function() {
         displayCommandOutput('File1.txt  File2.txt  Directory1');
         break;
 
-      case 'cd':
-        if (args.length > 1) {
-          // Implementation for 'cd' command
-          const directory = args[1];
-          displayCommandOutput(`Changed directory to ${directory}`);
-               break;
-
-      case 'mkdir':
+     case 'cd':
+  if (args.length > 1) {
+    // Implementation for 'cd' command
+    const directory = args[1];
+    displayCommandOutput(`Changed directory to ${directory}`);
+  } else {
+    displayCommandOutput('Missing directory name');
+  }
+  break;
+        case 'mkdir':
         if (args.length > 1) {
           // Implementation for 'mkdir' command
           const directory = args[1];
@@ -243,51 +245,50 @@ document.addEventListener('DOMContentLoaded', function() {
           displayCommandOutput('Missing message');
         }
         break;
-
-      case 'calc':
-        if (args.length > 1) {
-          const expression = args.slice(1).join(' ');
-          try {
-            const result = eval(expression);
-            displayCommandOutput(`Result: ${result}`);
-          } catch(error) {
-displayCommandOutput('Invalid expression');
-}
-} else {
-displayCommandOutput('Missing expression');
-}
-break;
-            case 'time':
-    const currentTime = new Date().toLocaleTimeString();
-    displayCommandOutput(currentTime);
-    break;
-
-  case 'download':
-    if (args.length > 2) {
-      const url = args[1];
-      const filename = args[2];
-      downloadFile(url, filename);
-    } else {
-      displayCommandOutput('Missing URL or filename');
+        case 'calc':
+  if (args.length > 1) {
+    const expression = args.slice(1).join(' ');
+    try {
+      const result = eval(expression);
+      displayCommandOutput(`Result: ${result}`);
+    } catch (error) {
+      displayCommandOutput('Invalid expression');
     }
-    break;
+  } else {
+    displayCommandOutput('Missing expression');
+  }
+  break;
+case 'time':
+        const currentTime = new Date().toLocaleTimeString();
+        displayCommandOutput(currentTime);
+        break;
 
-  default:
-    displayCommandOutput(`Command not found: ${args[0]}`);
-    break;
-}
-}
+      case 'download':
+        if (args.length > 2) {
+          const url = args[1];
+          const filename = args[2];
+          downloadFile(url, filename);
+        } else {
+          displayCommandOutput('Missing URL or filename');
+        }
+        break;
 
-function downloadFile(url, filename) {
-const link = document.createElement('a');
-link.href = url;
-link.download = filename;
-link.target = '_blank';
-link.click();
-displayCommandOutput(Downloading file: ${filename});
-}
+      default:
+        displayCommandOutput(`Command not found: ${args[0]}`);
+        break;
+    }
+  }
 
-function clearTerminal() {
-terminalOutput.innerHTML = '';
-}
+  function downloadFile(url, filename) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.target = '_blank';
+    link.click();
+    displayCommandOutput(`Downloading file: ${filename}`);
+  }
+
+  function clearTerminal() {
+    terminalOutput.innerHTML = '';
+  }
 });
