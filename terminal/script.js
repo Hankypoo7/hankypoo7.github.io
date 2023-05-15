@@ -80,6 +80,14 @@ document.addEventListener('DOMContentLoaded', function() {
       command: 'cowsay [message]',
       description: 'Display a cow saying a message',
     },
+    {
+      command: 'calc [expression]',
+      description: 'Evaluate a mathematical expression',
+    },
+    {
+      command: 'time',
+      description: 'Display current time',
+    },
   ];
 
   function getFileContent(file) {
@@ -233,6 +241,25 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
           displayCommandOutput('Missing message');
         }
+        break;
+
+      case 'calc':
+        if (args.length > 1) {
+          const expression = args.slice(1).join(' ');
+          try {
+            const result = eval(expression);
+            displayCommandOutput(`Result: ${result}`);
+          } catch (error) {
+                        displayCommandOutput('Invalid expression');
+          }
+        } else {
+          displayCommandOutput('Missing expression');
+        }
+        break;
+
+      case 'time':
+        const currentTime = new Date().toLocaleTimeString();
+        displayCommandOutput(`Current time: ${currentTime}`);
         break;
 
       default:
