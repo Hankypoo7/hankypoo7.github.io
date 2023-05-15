@@ -15,6 +15,7 @@ body {
 #terminal-output {
   flex: 1;
   overflow-y: scroll;
+  height: 450px;
 }
 
 #command-form {
