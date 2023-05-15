@@ -1,12 +1,19 @@
+body {
+  background-color: black;
+}
+
 #terminal-output {
-  background-color: black !important; /* Use !important to override any conflicting styles */
+  background-color: black;
   color: white;
   padding: 10px;
   font-family: monospace;
+  overflow-y: scroll;
+  height: 300px;
 }
 
 .command-output {
   margin: 0;
+  white-space: pre-line;
 }
 
 #command-form {
@@ -14,5 +21,22 @@
 }
 
 #command-input {
-  width: 300px;
+  width: 100%;
+  background-color: black; /* Set background color to black */
+  color: white; /* Set text color to white */
+  border: none;
+  outline: none;
+  font-family: monospace;
+}
+
+#command-input::placeholder {
+  color: gray;
+}
+
+#command-input:focus {
+  outline: none;
+}
+
+#command-input:focus::placeholder {
+  color: transparent;
 }
