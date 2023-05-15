@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
         break;
 
       case 'mkdir':
-        if (args.length > 1) {
+        if ( args.length > 1) {
           // Implementation for 'mkdir' command
           const directory = args[1];
           displayCommandOutput(`Created directory: ${directory}`);
@@ -140,8 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
           displayCommandOutput('Missing directory name');
         }
         break;
-
-      case 'touch':
+        case 'touch':
         if (args.length > 1) {
           // Implementation for 'touch' command
           const file = args[1];
@@ -242,15 +241,13 @@ document.addEventListener('DOMContentLoaded', function() {
           displayCommandOutput('Missing message');
         }
         break;
-
-      case 'calc':
+        case 'calc':
         if (args.length > 1) {
           const expression = args.slice(1).join(' ');
           try {
             const result = eval(expression);
             displayCommandOutput(`Result: ${result}`);
-          } catch (error) {
-                        displayCommandOutput('Invalid expression');
+          } catch (error) {            displayCommandOutput('Invalid expression');
           }
         } else {
           displayCommandOutput('Missing expression');
@@ -259,19 +256,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
       case 'time':
         const currentTime = new Date().toLocaleTimeString();
-        displayCommandOutput(`Current time: ${currentTime}`);
+        displayCommandOutput(currentTime);
         break;
 
       default:
-        displayCommandOutput('Invalid command');
+        displayCommandOutput(`Command not found: ${args[0]}`);
         break;
     }
-
-    // Scroll to the bottom of the terminal output
-    terminalOutput.scrollTop = terminalOutput.scrollHeight;
   }
 
   function clearTerminal() {
-    terminalOutput.innerHTML = '';
+    while (terminalOutput.firstChild) {
+      terminalOutput.removeChild(terminalOutput.firstChild);
+    }
   }
 });
+
+            
