@@ -1,14 +1,27 @@
 body {
   background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 150px; /* Adjust the width as needed */
+  background-color: black; /* Set the background color for the sidebar */
 }
 
 #terminal-output {
+  flex: 1;
   background-color: black;
   color: white;
   padding: 10px;
   font-family: monospace;
   overflow-y: scroll;
-  height: 300px;
+  height: 450px;
 }
 
 .command-output {
@@ -22,8 +35,8 @@ body {
 
 #command-input {
   width: 100%;
-  background-color: black; /* Set background color to black */
-  color: white; /* Set text color to white */
+  background-color: black;
+  color: white;
   border: none;
   outline: none;
   font-family: monospace;
