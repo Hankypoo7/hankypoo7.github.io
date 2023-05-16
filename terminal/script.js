@@ -97,12 +97,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function c(e) {
-        const t = document.createElement("p");
-        t.classList.add("command-output");
-        t.textContent = e;
-        e.appendChild(t);
-        e.scrollTop = e.scrollHeight;
-    }
+    const t = document.createElement("p");
+    t.classList.add("command-output");
+    t.textContent = e;
+    e.appendChild(t);
+    e.scrollTop = e.scrollHeight;
+}
+
 
     function a(e) {
         const t = e.split(" ");
