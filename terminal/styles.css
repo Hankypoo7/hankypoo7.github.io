@@ -5,7 +5,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  height: 534px;
+  height: 450px;
   background-color: black;
   color: white;
   padding: 10px;
