@@ -178,12 +178,12 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function formatHelpText() {
-    let helpText = "Available commands:\n";
-    o.forEach((item) => {
-      helpText += item.command + " - " + item.description + "\n";
-    });
-    return helpText;
-  }
+  let helpText = "Available commands:\n";
+  o.forEach((item) => {
+    helpText += item.command + " - " + item.description + "\n";
+  });
+  return helpText;
+}
 
   function clearTerminal() {
     e.innerHTML = "";
