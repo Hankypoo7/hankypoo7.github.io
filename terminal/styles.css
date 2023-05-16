@@ -5,7 +5,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 534px;
   background-color: black;
   color: white;
   padding: 10px;
@@ -15,7 +15,6 @@ body {
 #terminal-output {
   flex: 1;
   overflow-y: scroll;
-  height: 200px; /* Adjust the height as per your requirement */
 }
 
 #command-form {
