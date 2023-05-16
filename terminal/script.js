@@ -37,12 +37,13 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function displayOutput(output) {
-    const p = document.createElement("p");
-    p.classList.add("command-output");
-    p.textContent = output;
-    e.appendChild(p);
-    e.scrollTop = e.scrollHeight;
-  }
+  const p = document.createElement("p");
+  p.classList.add("command-output");
+  p.innerHTML = output;
+  e.appendChild(p);
+  e.scrollTop = e.scrollHeight;
+}
+
 
   function executeCommand(command) {
     const args = command.split(" ");
@@ -180,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function formatHelpText() {
   let helpText = "Available commands:\n";
   o.forEach((item) => {
-    helpText += item.command + " - " + item.description + "\n";
+    helpText += item.command + " - " + item.description + "<br>";
   });
   return helpText;
 }
