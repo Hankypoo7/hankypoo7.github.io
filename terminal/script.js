@@ -36,13 +36,14 @@ document.addEventListener("DOMContentLoaded", function() {
     return "File content of " + file;
   }
 
-  function displayOutput(output) {
+function displayOutput(output) {
   const p = document.createElement("p");
   p.classList.add("command-output");
-  p.innerHTML = output;
+  p.innerText = output;
   e.appendChild(p);
   e.scrollTop = e.scrollHeight;
 }
+
 
 
   function executeCommand(command) {
@@ -178,13 +179,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  function formatHelpText() {
+ function formatHelpText() {
   let helpText = "Available commands:\n";
   o.forEach((item) => {
-    helpText += item.command + " - " + item.description + "<br>";
+    helpText += item.command + " - " + item.description + "\n";
   });
   return helpText;
 }
+
 
   function clearTerminal() {
     e.innerHTML = "";
