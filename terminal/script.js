@@ -110,15 +110,15 @@ document.addEventListener('DOMContentLoaded', function() {
   terminalOutput.scrollTop = terminalOutput.scrollHeight;
 }
 
-  function displayHelp() {
-    const helpOutput = document.createElement('p');
-    helpOutput.classList.add('command-output');
-    helpOutput.innerHTML = '<strong>Available commands:</strong><br>';
-    availableCommands.forEach(function(cmd) {
-      helpOutput.innerHTML += `<strong>${cmd.command}</strong>: ${cmd.description}<br>`;
-    });
-    terminalOutput.appendChild(helpOutput);
-  }
+  function displayCommandOutput(output) {
+  const outputElement = document.createElement('p');
+  outputElement.classList.add('command-output');
+  outputElement.textContent = output;
+  terminalOutput.appendChild(outputElement);
+
+  // Scroll to the bottom of the terminal output
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
 
   function executeCommand(command) {
     const args = command.split(' ');
