@@ -39,8 +39,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     switch (cmd) {
       case "ls":
-        displayOutput("File1.txt File2.txt Directory1");
-        break;
+  // Check if the File API is supported
+  if (window.File && window.FileReader && window.FileList && window.Blob) {
+    // Get the selected files from the input element
+    const files = document.getElementById("file-input").files;
+    let fileList = "";
+    
+    // Loop through the selected files and get their names
+    for (let i = 0; i < files.length; i++) {
+      fileList += files[i].name + " ";
+    }
+    
+    // Display the file list
+    displayOutput(fileList);
+  } else {
+    displayOutput("File API not supported in this browser");
+  }
+  break;
+
       case "cd":
         if (args.length > 1) {
           const directory = args[1];
