@@ -187,7 +187,31 @@ function displayOutput(output) {
   return helpText;
 }
 
+// script.js
 
+const fs = require('fs');
+const path = require('path');
+
+const commandsDirectory = path.join(__dirname, 'commands');
+
+// Read the files in the commands directory
+fs.readdir(commandsDirectory, (err, files) => {
+  if (err) {
+    console.error('Error reading commands directory:', err);
+    return;
+  }
+
+  // Import each command file dynamically
+  files.forEach((file) => {
+    const commandPath = path.join(commandsDirectory, file);
+    const command = require(commandPath);
+    // Process the command object as needed
+    console.log('Imported command:', command);
+  });
+});
+
+  
+  
   function clearTerminal() {
     e.innerHTML = "";
   }
