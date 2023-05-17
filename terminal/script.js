@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { command: "calc [expression]", description: "Evaluate a mathematical expression" },
     { command: "time", description: "Display current time" },
     { command: "download [url] [filename]", description: "Download a file from a URL" },
+    { command: "python [code]", description: "Execute Python code" },
   ];
 
   function executeCommand(command) {
@@ -38,6 +39,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const cmd = args[0];
 
     switch (cmd) {
+      
+        case "python":
+        if (args.length > 1) {
+          const code = args.slice(1).join(" ");
+          executePythonCode(code);
+        } else {
+          displayOutput("Missing Python code");
+        }
+        break;
+      // ...
+      
+        
       case "ls":
   // Check if the File API is supported
   if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -192,6 +205,24 @@ document.addEventListener("DOMContentLoaded", function () {
     terminalOutput.scrollTop = terminalOutput.scrollHeight;
   }
 
+  function executePythonCode(code) {
+    // Send a request to the backend server to execute the Python code
+    fetch("/execute-python", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ code }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        displayOutput(data.output);
+      })
+      .catch((error) => {
+        displayOutput("Failed to execute Python code");
+      });
+  }
+  
   function getFileInfo(file) {
     return "File content of " + file;
   }
