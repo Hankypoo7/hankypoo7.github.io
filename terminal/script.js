@@ -1,15 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const e = document.getElementById("terminal-output");
-  const t = document.getElementById("command-input");
-  const n = document.getElementById("command-form");
+document.addEventListener("DOMContentLoaded", function () {
+  const terminalOutput = document.getElementById("terminal-output");
+  const commandInput = document.getElementById("command-input");
+  const commandForm = document.getElementById("command-form");
 
-  n.addEventListener("submit", function(n) {
-    n.preventDefault();
-    executeCommand(t.value.trim());
-    t.value = "";
+  commandForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    executeCommand(commandInput.value.trim());
+    commandInput.value = "";
   });
 
-  const o = [
+  // Array of available commands
+  const availableCommands = [
     { command: "ls", description: "List files and directories" },
     { command: "cd [directory]", description: "Change directory" },
     { command: "mkdir [directory]", description: "Create a new directory" },
@@ -29,26 +30,13 @@ document.addEventListener("DOMContentLoaded", function() {
     { command: "cowsay [message]", description: "Display a cow saying a message" },
     { command: "calc [expression]", description: "Evaluate a mathematical expression" },
     { command: "time", description: "Display current time" },
-    { command: "download [url] [filename]", description: "Download a file from a URL" }
+    { command: "download [url] [filename]", description: "Download a file from a URL" },
   ];
-
-  function getFileInfo(file) {
-    return "File content of " + file;
-  }
-
-function displayOutput(output) {
-  const p = document.createElement("p");
-  p.classList.add("command-output");
-  p.innerText = output;
-  e.appendChild(p);
-  e.scrollTop = e.scrollHeight;
-}
-
-
 
   function executeCommand(command) {
     const args = command.split(" ");
     const cmd = args[0];
+
     switch (cmd) {
       case "ls":
         displayOutput("File1.txt File2.txt Directory1");
@@ -88,7 +76,7 @@ function displayOutput(output) {
       case "pwd":
         displayOutput("/home/user");
         break;
-                  case "echo":
+      case "echo":
         if (args.length > 1) {
           const message = args.slice(1).join(" ");
           displayOutput(message);
@@ -135,6 +123,7 @@ function displayOutput(output) {
         displayOutput("System resource usage:");
         break;
       case "exit":
+        // Terminate the terminal
         break;
       case "sl":
         displayOutput("Command not available");
@@ -179,41 +168,28 @@ function displayOutput(output) {
     }
   }
 
- function formatHelpText() {
-  let helpText = "Available commands:\n";
-  o.forEach((item) => {
-    helpText += item.command + " - " + item.description + "\n";
-  });
-  return helpText;
-}
-
-// script.js
-
-const fs = require('fs');
-const path = require('path');
-
-const commandsDirectory = path.join(__dirname, 'commands');
-
-// Read the files in the commands directory
-fs.readdir(commandsDirectory, (err, files) => {
-  if (err) {
-    console.error('Error reading commands directory:', err);
-    return;
+  function displayOutput(output) {
+    const outputLine = document.createElement("p");
+    outputLine.classList.add("command-output");
+    outputLine.textContent = output;
+    terminalOutput.appendChild(outputLine);
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
   }
 
-  // Import each command file dynamically
-  files.forEach((file) => {
-    const commandPath = path.join(commandsDirectory, file);
-    const command = require(commandPath);
-    // Process the command object as needed
-    console.log('Imported command:', command);
-  });
-});
+  function getFileInfo(file) {
+    return "File content of " + file;
+  }
 
-  
-  
+  function formatHelpText() {
+    let helpText = "Available commands:\n";
+    availableCommands.forEach((command) => {
+      helpText += command.command + " - " + command.description + "\n";
+    });
+    return helpText;
+  }
+
   function clearTerminal() {
-    e.innerHTML = "";
+    terminalOutput.innerHTML = "";
   }
 
   function downloadFile(url, filename) {
