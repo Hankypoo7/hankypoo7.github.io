@@ -4,14 +4,26 @@
     <title>Xterm.js Example</title>
     <link rel="stylesheet" href="https://unpkg.com/xterm/css/xterm.css" />
     <script src="https://unpkg.com/xterm/lib/xterm.js"></script>
+    <script src="https://unpkg.com/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
 </head>
 <body>
     <div id="terminal"></div>
 
     <script>
-        // Create an instance of xterm.js and attach it to the DOM element
+        // Create a new instance of Terminal
         const term = new Terminal();
+
+        // Create an instance of the FitAddon
+        const fitAddon = new FitAddon();
+
+        // Attach the FitAddon to the terminal
+        term.loadAddon(fitAddon);
+
+        // Attach the terminal to a DOM element
         term.open(document.getElementById('terminal'));
+
+        // Fit the terminal to the size of the container
+        fitAddon.fit();
 
         // Example: Write "Hello, World!" to the terminal
         term.writeln('Hello, World!');
